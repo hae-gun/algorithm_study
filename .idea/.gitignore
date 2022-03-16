@@ -8,6 +8,7 @@
 /httpRequests/
 # Compiled class file
 *.class
+**.class
 ../out/**/*.class
 # Log file
 *.log
