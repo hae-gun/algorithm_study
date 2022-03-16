@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Queue;
 
 public class Prog_49189 {
+    // url : https://programmers.co.kr/learn/courses/30/lessons/49189
     public static void main(String[] args) {
         System.out.println(Solution49189.solution(6, new int[][]{{3, 6}, {4, 3}, {3, 2}, {1, 3}, {1, 2}, {2, 4}, {5, 2}}) == 3);
     }
