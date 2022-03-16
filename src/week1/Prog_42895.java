@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Prog_42895 {
+    // url : https://programmers.co.kr/learn/courses/30/lessons/42895
     public static void main(String[] args) {
         System.out.println(Solution42895.solution(5,12) == 4);
     }

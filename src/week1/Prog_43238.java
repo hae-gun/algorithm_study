@@ -3,6 +3,7 @@ package week1;
 import java.util.Arrays;
 
 public class Prog_43238 {
+    // url : https://programmers.co.kr/learn/courses/30/lessons/43238
     public static void main(String[] args) {
         // 6	[7, 10]	28
         System.out.println(Solution43238.solution(6, new int[]{7,10}) == 28);

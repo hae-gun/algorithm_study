@@ -3,6 +3,7 @@ package week1;
 import java.util.Objects;
 
 public class Prog_17676 {
+    // url : https://programmers.co.kr/learn/courses/30/lessons/17676
     public static void main(String[] args) {
         String[] times = new String[]{
                 "2016-09-15 20:59:57.421 0.351s",
