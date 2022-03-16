@@ -6,10 +6,9 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
-/out/*
 # Compiled class file
 *.class
-
+../out/*
 # Log file
 *.log
 
