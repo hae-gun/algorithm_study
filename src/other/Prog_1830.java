@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Prog_1830 {
+    // url : https://programmers.co.kr/learn/courses/30/lessons/1830
     public static void main(String[] args) {
         System.out.println("sss".replaceAll("s", ""));
     }
