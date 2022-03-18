@@ -1,5 +1,4 @@
 package level2;
-
 import common.Print;
 
 import java.util.Arrays;
