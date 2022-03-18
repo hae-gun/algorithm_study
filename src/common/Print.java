@@ -8,4 +8,14 @@ public class Print {
             System.out.println("오답입니다.");
         }
     }
+    public static void answer(int[] solution, int[] answer){
+        boolean collect = true;
+        for(int i=0; i<answer.length; i++){
+            if(solution[i] != answer[i]){
+                collect = false;
+                break;
+            }
+        }
+        answer(collect);
+    }
 }
