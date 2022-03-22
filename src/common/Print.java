@@ -18,4 +18,7 @@ public class Print {
         }
         answer(collect);
     }
+    public static void answer(String solution, String answer){
+        answer(solution.equals(answer));
+    }
 }
