@@ -42,7 +42,13 @@ class Node {
 class Solution81303 {
     public static String solution(int n, int k, String[] cmds) {
         String answer = "";
+        return answer;
+    }
+    // 효율성 테스트 실패 -> 문자열 만드는 로직 String += 연산에서 StringBuilder 사용하여 효율성 통과됨.
+    public static String solution_timeOut(int n, int k, String[] cmds) {
+        String answer = "";
         Node[] nodes = new Node[n];
+        boolean[] remove = new boolean[n];
         for (int i = 0; i < n; i++) {
             nodes[i] = new Node(i);
             if (i != 0) {
@@ -53,6 +59,8 @@ class Solution81303 {
         Node curNode = nodes[k];
         Stack<Node> history = new Stack<>();
         for (String cmd : cmds) {
+            //System.out.println("BEFORE : " + Arrays.toString(remove));
+            //System.out.println(cmd);
             String[] oper = cmd.split(" ");
 
             switch (oper[0]) {
@@ -77,17 +85,55 @@ class Solution81303 {
                     }
                     break;
                 case "C":
+                    history.add(curNode);
+                    remove[curNode.idx] = true;
+                    //System.out.println("REMOVE NODE "+curNode);
+                    if(curNode.next != null && curNode.prev != null){ // 중간노드인 경우
+                        Node prev = curNode.prev;
+                        Node next = curNode.next;
+                        prev.next = next;
+                        next.prev = prev;
+                        curNode = next;
+                    }else if(curNode.next == null && curNode.prev != null){ // 가장끝노드
+                        Node prev = curNode.prev;
+                        Node next = curNode.next;
+                        prev.next = next;
+                        curNode = prev;
+                    }else if(curNode.next !=null && curNode.prev == null){ // 가장 처음노드
+                        Node prev = curNode.prev;
+                        Node next = curNode.next;
+                        next.prev = prev;
+                        curNode = next;
+                    }
                     break;
                 case "Z":
-                    System.out.println("BACK UP");
+                    Node backupNode = history.pop();
+                    remove[backupNode.idx] = false;
+                    //System.out.println("BACK UP NODE " + backupNode);
+                    Node bkPrev = backupNode.prev;
+                    Node bkNext = backupNode.next;
+
+                    if(bkPrev != null){
+                        bkPrev.next = backupNode;
+                    }
+                    if(bkNext != null){
+                        bkNext.prev = backupNode;
+                    }
+
                     break;
             }
 
+            //System.out.println("AFTER : " + Arrays.toString(remove));
+
         }
+        StringBuilder sb = new StringBuilder();
+        for(boolean isRemove : remove){
+            if(isRemove) sb.append("X");
+            else sb.append("O");
+        }
+        answer = sb.toString();
         return answer;
     }
-
-
     // 시간초과
     public static String solution_notSolve(int n, int k, String[] cmds) {
         String answer = "";
