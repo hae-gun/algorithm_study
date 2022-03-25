@@ -21,6 +21,9 @@ public class Print {
     public static void answer(Object solution, Object answer){
         answer(solution.equals(answer));
     }
+    public static void answer(long solution, long answer){
+        answer(solution == answer);
+    }
     public static void answer(String solution, String answer){
         answer(solution.equals(answer));
     }

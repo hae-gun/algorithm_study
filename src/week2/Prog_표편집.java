@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Prog_표편집 {
     public static void main(String[] args) {
-//        Print.answer(Solution81303.solution(8,	2, new String[]{"D 2", "C", "U 3", "C", "D 4", "C", "U 2", "Z", "Z"}),"OOOOXOOO");
+        Print.answer(Solution81303.solution(8, 2, new String[]{"D 2", "C", "U 3", "C", "D 4", "C", "U 2", "Z", "Z"}), "OOOOXOOO");
         Print.answer(Solution81303.solution(8, 2, new String[]{"D 2", "C", "U 3", "C", "D 4", "C", "U 2", "Z", "Z", "U 1", "C"}), "OOXOXOOO");
 //        8	2	["D 2","C","U 3","C","D 4","C","U 2","Z","Z","U 1","C"]	"OOXOXOOO"
     }
@@ -40,12 +40,8 @@ class Node {
 }
 
 class Solution81303 {
+    // 효율성 테스트 실패 -> 문자열 만드는 로직 String += 연산 -> StringBuilder 사용하여 효율성 통과됨.
     public static String solution(int n, int k, String[] cmds) {
-        String answer = "";
-        return answer;
-    }
-    // 효율성 테스트 실패 -> 문자열 만드는 로직 String += 연산에서 StringBuilder 사용하여 효율성 통과됨.
-    public static String solution_timeOut(int n, int k, String[] cmds) {
         String answer = "";
         Node[] nodes = new Node[n];
         boolean[] remove = new boolean[n];
@@ -66,28 +62,36 @@ class Solution81303 {
             switch (oper[0]) {
                 case "D":
                     int move = Integer.valueOf(oper[1]);
-                    while(curNode.next != null){
+                    while (curNode.next != null) {
                         curNode = curNode.next;
                         move--;
-                        if(move == 0){
+                        if (move == 0) {
                             break;
                         }
                     }
                     break;
                 case "U":
                     move = Integer.valueOf(oper[1]);
-                    while(curNode.prev != null){
+                    while (curNode.prev != null) {
                         curNode = curNode.prev;
                         move--;
-                        if(move == 0){
+                        if (move == 0) {
                             break;
                         }
                     }
                     break;
                 case "C":
                     history.add(curNode);
-                    remove[curNode.idx] = true;
-                    //System.out.println("REMOVE NODE "+curNode);
+                    remove[curNode.idx] = true; // 해당노드 삭제처리
+                    Node prev = curNode.prev;
+                    Node next = curNode.next;
+
+                    if (prev != null) prev.next = next;
+                    if (next != null) next.prev = prev;
+
+                    if (curNode.next == null) curNode = prev; // 맨끝노드일때.
+                    else curNode = next; // 나머지 (맨앞노드, 중간노드)
+                    /* 위 코드로 깔끔하게 정리.
                     if(curNode.next != null && curNode.prev != null){ // 중간노드인 경우
                         Node prev = curNode.prev;
                         Node next = curNode.next;
@@ -104,19 +108,19 @@ class Solution81303 {
                         Node next = curNode.next;
                         next.prev = prev;
                         curNode = next;
-                    }
+                    }*/
                     break;
                 case "Z":
                     Node backupNode = history.pop();
-                    remove[backupNode.idx] = false;
+                    remove[backupNode.idx] = false; // 노드 복구
                     //System.out.println("BACK UP NODE " + backupNode);
                     Node bkPrev = backupNode.prev;
                     Node bkNext = backupNode.next;
 
-                    if(bkPrev != null){
+                    if (bkPrev != null) {
                         bkPrev.next = backupNode;
                     }
-                    if(bkNext != null){
+                    if (bkNext != null) {
                         bkNext.prev = backupNode;
                     }
 
@@ -127,13 +131,14 @@ class Solution81303 {
 
         }
         StringBuilder sb = new StringBuilder();
-        for(boolean isRemove : remove){
-            if(isRemove) sb.append("X");
+        for (boolean isRemove : remove) {
+            if (isRemove) sb.append("X");
             else sb.append("O");
         }
         answer = sb.toString();
         return answer;
     }
+
     // 시간초과
     public static String solution_notSolve(int n, int k, String[] cmds) {
         String answer = "";
