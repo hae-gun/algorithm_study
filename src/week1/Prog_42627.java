@@ -7,6 +7,8 @@ public class Prog_42627 {
     // url : https://programmers.co.kr/learn/courses/30/lessons/42627
     public static void main(String[] args) {
         System.out.println(Solution42627.solution(new int[][]{{0, 3}, {1, 9}, {2, 6}}) == 9);
+
+
     }
 }
 class Solution42627{

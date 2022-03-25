@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class Prog_92342 {
     public static void main(String[] args) {
-        Print.answer(Solution92342.solution(5, new int[]{2, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0}), new int[]{0, 2, 2, 0, 1, 0, 0, 0, 0, 0, 0});
+        Print.answer(Solution92342.solution(10, new int[]{0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 3}), new int[]{1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 2});
     }
 }
 
