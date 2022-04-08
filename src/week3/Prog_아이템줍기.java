@@ -42,21 +42,8 @@ class Solution87694{
                 if(map[cy][cx] != 1 && map[cy][cx] != 2) continue;
                 // 현 위치에서 4방향 탐색해서 진행
                 while(map[cy][cx] != 4){
-                    System.out.println(cx + "," + cy);
+                    //System.out.println(cx + "," + cy);
                     map[cy][cx] = 3;
-                    for(int i=map.length-1; i>=0; i--){
-                        int[] line = map[i];
-                        for(int j=0; j<line.length; j++){
-                            if(line[j]==0){
-                                System.out.print(" ");
-                            }else if(line[j]<0){
-                                System.out.print("I");
-                            }else{
-                                System.out.print(line[j]);
-                            }
-                        }
-                        System.out.println();
-                    }
                     tempx = cx;
                     tempy = cy;
                     for(int dir=0; dir<4; dir++){
@@ -74,22 +61,6 @@ class Solution87694{
             }
             answer = answer == 0 ? distance : Math.min(answer, distance);
         }
-
-
-        for(int i=map.length-1; i>=0; i--){
-            int[] line = map[i];
-            for(int j=0; j<line.length; j++){
-                if(line[j]==0){
-                    System.out.print(" ");
-                }else if(line[j]<0){
-                    System.out.print("I");
-                }else{
-                    System.out.print(line[j]);
-                }
-            }
-            System.out.println();
-        }
-
         return answer;
     }
 
