@@ -18,8 +18,26 @@ public class Print {
         }
         answer(collect);
     }
+    public static void answer(Object[] solutions, Object[] answers){
+        boolean isOk = true;
+        if(solutions.length == 0){
+            if(answers.length != 0){
+                isOk = false;
+            }
+        }
+        for(int i=0; i<solutions.length; i++){
+            if(!solutions[i].equals(answers[i])){
+                isOk = false;
+                break;
+            }
+        }
+        answer(isOk);
+    }
     public static void answer(Object solution, Object answer){
         answer(solution.equals(answer));
+    }
+    public static void answer(long solution, long answer){
+        answer(solution == answer);
     }
     public static void answer(String solution, String answer){
         answer(solution.equals(answer));
