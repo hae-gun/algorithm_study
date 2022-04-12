@@ -2,10 +2,7 @@ package week2;
 
 import common.Print;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Prog_불량사용자 {
     public static void main(String[] args) {
@@ -30,7 +27,7 @@ class Solution64064 {
                 }
             }
         }
-        
+        Collections.reverseOrder();
 
         return answer;
     }
