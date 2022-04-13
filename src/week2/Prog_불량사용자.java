@@ -37,6 +37,7 @@ class Solution64064 {
                 list.remove(s);
             }
         }
+        Collections.reverseOrder();
     }
 
     private static boolean check(Set<String> set, String[] banned_id) {
