@@ -37,11 +37,8 @@ class Solution64064 {
                 list.remove(s);
             }
         }
-<<<<<<< HEAD
         Collections.reverseOrder();
-=======
     }
->>>>>>> 43038d8bb28f734d05b80078470090dc6f4e7a62
 
     private static boolean check(Set<String> set, String[] banned_id) {
         List<String> list = new ArrayList<>(set);
