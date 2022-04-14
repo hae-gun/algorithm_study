@@ -16,12 +16,9 @@ public class Set {
 
 
         EnumSet<MyEnum> enumSet = EnumSet.of(MyEnum.A, MyEnum.B);
+        int[] test = {1,9,2,5,3,4,7,6,8};
 
-        TreeSet<String> treeSet = new TreeSet<>(Collections.reverseOrder());
-
-
-
-
+       // System.out.println(treeSet.stream().reduce((o1,o2) -> o1+o2).get());
 
     }
 }
