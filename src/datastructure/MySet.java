@@ -1,9 +1,10 @@
 package datastructure;
 
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 
-public class Set {
+public class MySet {
     public static void main(String[] args) {
         HashSet<String> hashSet = new HashSet<>(20,0.5f);
         hashSet.contains("s");
