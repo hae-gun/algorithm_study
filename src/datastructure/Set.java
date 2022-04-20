@@ -18,20 +18,7 @@ public class Set {
         EnumSet<MyEnum> enumSet = EnumSet.of(MyEnum.A, MyEnum.B);
         int[] test = {1,9,2,5,3,4,7,6,8};
 
-        Hashtable hs;
-        ConcurrentHashMap ch;
 
-        TestInterface it = v -> System.out.println(v);
-        it.test("123");
+       
     }
 }
-enum MyEnum{
-    A,B,C;
-}
-interface TestInterface{
-    void test(String s);
-}
-
-
-
-
