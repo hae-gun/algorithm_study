@@ -18,14 +18,7 @@ public class Set {
         EnumSet<MyEnum> enumSet = EnumSet.of(MyEnum.A, MyEnum.B);
         int[] test = {1,9,2,5,3,4,7,6,8};
 
-       // System.out.println(treeSet.stream().reduce((o1,o2) -> o1+o2).get());
 
+       
     }
 }
-enum MyEnum{
-    A,B,C;
-}
-
-
-
-
