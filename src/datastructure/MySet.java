@@ -16,8 +16,8 @@ public class MySet {
         linkedHashSet.add("S");
 
 
-        EnumSet<MyEnum> enumSet = EnumSet.of(MyEnum.A, MyEnum.B);
-        int[] test = {1,9,2,5,3,4,7,6,8};
+//        EnumSet<MyEnum> enumSet = EnumSet.of(MyEnum.A, MyEnum.B);
+//        int[] test = {1,9,2,5,3,4,7,6,8};
 
 
        

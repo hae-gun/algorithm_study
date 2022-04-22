@@ -9,14 +9,16 @@ public class InsertionSort {
         // 인덱스가 0에 도달하면 잡고있는 값이 가장 작은거임
         // 시간복잡도 O(n^2) -> 1, 2, 3 ... n-2, n-1 Full Scan
         // 공간복잡도 O(n) 배열하나.
-        for(int i=1; i<arr.length; i++){
+        for(int i=0; i<arr.length; i++){
             int key = arr[i], j = i-1;
-            System.out.println("KEY INDEX " + i + ", key = " + key);
+            System.out.println(key);
             while(j>=0 && key < arr[j]){
-                arr[j+1] = arr[j];
+                arr[j+1] = arr[j]; // 오른쪽으로 쉬프트
                 j--;
+                //System.out.println(Arrays.toString(arr));
             }
             arr[j+1] = key;
+            System.out.println(Arrays.toString(arr));
         }
 
     }
