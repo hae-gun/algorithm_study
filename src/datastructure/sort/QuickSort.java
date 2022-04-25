@@ -9,9 +9,13 @@ public class QuickSort {
     public static void main(String[] args) {
         // pivot 을 이용.
         // 투포인터 이용
-        // pivot 보다 작은것은 left로 큰것은 right로 옮김.
-        // 투포인터 교차시 해당지점 -> pivot 위치
+        // pivot 보다 작은것은 left 로 큰것은 right 로 옮김.
+        // -> left 는 pivot 보다 작은것이 나올때 까지 왼쪽에서 인덱스 증가,
+        //    right 는 pivot 보다 큰것이 나올떄 까지 오른쪽에서 인덱스 감소.
+        //    찾은 left 와 right 의 위치를 변경
+        //    투포인터 교차시 (left 인덱스가 right 보다 커지면 ) 해당지점과 pivot 의 위치를 변경.
         // 교환후 인덱스 증가시키기.
+        // left ~ mid 구간과 mid+1 right 구간으로 나눠 재귀실행.
         // 시간복잡도 BEST : NlogN , 평균 : NlogN, Worst : N^2
         // 공간복잡도 : N 배열 한곳에서 이동
         // 순환 호출의 깊이
@@ -25,16 +29,16 @@ public class QuickSort {
         // 평균 n번
         // 순환 호출의 깊이 * 각 순환 호출 단계의 비교 연산 = nlog₂n
         // 최악의 경우 : 나눠지는 배열이 한쪽에 치우칠때. 불균형으로 배열이 분해될때. -> 이미 정렬된 배열을 돌때 가장 최악이다.
-        int[] arr = new int[]{10,9,8,7,6,5,4,3,2,1,0,11,15,18,20};
+        int[] arr = new int[]{10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 15, 11, 18, 20};
         quickSort(arr, 0, arr.length - 1);
-
+        System.out.println(Arrays.toString(arr));
     }
 
     private static void quickSort(int[] arr, int low, int high) {
         if (low >= high) return;
-        int pivot = partition(arr, low, high);
-        quickSort(arr, low, pivot - 1);
-        quickSort(arr, pivot, high);
+        int partition = partition(arr, low, high);
+        quickSort(arr, low, partition - 1);
+        quickSort(arr, partition, high);
     }
 
     private static int partition(int[] arr, int left, int right) {
@@ -50,13 +54,12 @@ public class QuickSort {
             while (arr[right] > pivot) {
                 right--;
             }
-            if (left <= right) { // 이 조건 필요함 왜?
-                swap(arr, left, right);
-//                System.out.println(Arrays.toString(arr));
-                left++;
-                right--;
-                // 마지막 교차전 스왑하면 위 루프를 탈출 할 수 없어짐. 따라서 인덱스 한번더 이동.
+            if (left > right) {
+                break;
             }
+            swap(arr, left, right);
+            left++;
+            right--;
         }
         return left;
     }
