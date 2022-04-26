@@ -1,9 +1,6 @@
 package datastructure;
 
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
 
 // 다익스트라 알고리즘
 // 그리디 + DP 를 이용함.
@@ -42,22 +39,19 @@ public class Dijkstra {
         for(int[] line : graph){
             System.out.println(Arrays.toString(line));
         }
-        int distance = dijstra(0, 5, graph);
-
+        int distance = dijkstra(0, 5, graph);
+        System.out.println(distance);
 
     }
 
-    private static int dijstra(int start, int target, int[][] graph) {
+    private static int dijkstra(int start, int target, int[][] graph) {
         int[] temp = graph[start];
         if(graph[start][target] == -1){
             for(int i=0; i<temp.length; i++){
-                Queue<int[]> q = new LinkedList<>();
+                //Queue<int[]> q = new LinkedList<>();
                 if(temp[i]==-1) continue;
-                q.add(new int[]{start, i, temp[i]});
-                while(!q.isEmpty()){
-                    
-
-                }
+                if(graph[start][target]==-1) graph[start][target] = graph[start][i]+ temp[i];
+                else graph[start][target] = Math.min(graph[start][target], graph[start][i]+ temp[i]);
             }
         }
 

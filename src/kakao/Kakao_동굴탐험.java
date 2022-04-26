@@ -46,6 +46,8 @@ public class Kakao_동굴탐험 {
     }
 
     // 위상정렬 이용하기.
+    // 전체 Degree 설정 후 order 에 있는 순서쌍을 그래프에 추가.
+    // order 순서쌍 그래프 추가시 해당 child 의 degree 증가.
     public static boolean topological_sort(List<Integer>[] graph, int[][] order) {
         Queue<Integer> q = new LinkedList<>();
         int[] inDegree = new int [graph.length];
@@ -68,10 +70,7 @@ public class Kakao_동굴탐험 {
         int cnt = 0;
         while(!q.isEmpty()) {
             int cur = q.poll();
-
-//          System.out.print(cur + " ");
             cnt++;
-
             for(int i = 0; i < graph[cur].size(); i++) {
                 int next = graph[cur].get(i);
 
@@ -81,7 +80,8 @@ public class Kakao_동굴탐험 {
 
             }
         }
-
+        // 전체 노드가 모두 큐에 들어왔다면 cnt 의 갯수와 노드의 갯수가 같아짐.
+        // 두 수가 다르다는 것 => 전체를 조회하지 못했다는것.
         return cnt == graph.length ? true : false;
     }
 }
